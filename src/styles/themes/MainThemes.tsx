@@ -3,9 +3,9 @@ import { DefaultTheme } from "../../../interfaces/StylesInterface";
 export const theme: DefaultTheme = {
   colors: {
     background: "#fff",
-    dark: "#000000",
-    primary: "#fed9c9",
-    secondary: "#af7627",
+    tetiear: "#30454C",
+    primary: "#D39D5B",
+    secondary: "#AD7A51",
   },
   breakpoints: {
     xs: "320px",

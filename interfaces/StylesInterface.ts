@@ -2,7 +2,7 @@ export interface Global {
   theme: {
     colors: {
       background: string;
-      dark: string;
+      tetiear: string;
       primary: string;
       secondary: string;
     };
@@ -23,7 +23,7 @@ export interface Global {
 export interface DefaultTheme {
   colors: {
     background: string;
-    dark: string;
+    tetiear: string;
     primary: string;
     secondary: string;
   };
@@ -39,4 +39,3 @@ export interface DefaultTheme {
     border: string;
   };
 }
-
