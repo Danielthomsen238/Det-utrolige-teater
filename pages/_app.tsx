@@ -5,6 +5,7 @@ import { GlobalStyles } from "../src/styles/Global";
 import Auth from "../components/auth";
 import "../src/styles/GlobalStyles.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const App = ({ Component, pageProps }: any) => {
   return (
@@ -20,6 +21,7 @@ const App = ({ Component, pageProps }: any) => {
           ) : (
             <Component {...pageProps} />
           )}
+          <Footer />
         </ThemeProvider>
       </SessionProvider>
     </>

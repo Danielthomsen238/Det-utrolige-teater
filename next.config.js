@@ -4,6 +4,14 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.mediehuset.net",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

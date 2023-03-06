@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle<Global>`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Playfair Display', serif;
     
 }
 html, body {
@@ -23,7 +24,7 @@ html, body {
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 200px minmax(100vh, auto) auto;
+    grid-template-rows: auto minmax(100vh, auto) auto;
     gap: 5px;
     background-color: ${(props) => props.theme.colors.background};
 

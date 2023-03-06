@@ -1,6 +1,10 @@
 import Head from "next/head";
+import { HtmlHeadProps } from "../interfaces/ComponentProps";
 
-const HtmlHead = (props: any) => {
+/*
+This components is used to generate the <head> tag with title and description
+*/
+const HtmlHead = (props: HtmlHeadProps) => {
   const { title, description } = props;
   return (
     <Head>

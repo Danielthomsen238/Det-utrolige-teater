@@ -6,11 +6,9 @@ interface NavProps {
 
 const StyledNav = styled.nav<NavProps>`
   position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-top: 1vw;
   width: 100%;
+  margin-top: 20px;
+
   .logo {
     position: relative;
     width: 290px;
@@ -21,8 +19,8 @@ const StyledNav = styled.nav<NavProps>`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-
     .links {
+      margin-top: 20px;
       transition: 300ms ease-in-out;
       height: ${(props) => (props.show ? "30vw" : "0vw")};
       overflow: hidden;
@@ -33,9 +31,9 @@ const StyledNav = styled.nav<NavProps>`
       align-items: center;
       a {
         font-size: 5vw;
-        color: black;
+        color: #707070;
         &:hover {
-          color: #af7627;
+          color: #d39d5b;
         }
       }
     }
@@ -46,7 +44,7 @@ const StyledNav = styled.nav<NavProps>`
     width: 40px;
     z-index: 6;
     position: absolute;
-    top: 0;
+    top: 40%;
     right: 15px;
     display: flex;
     flex-direction: column;
@@ -76,11 +74,9 @@ const StyledNav = styled.nav<NavProps>`
     }
   }
   @media all and (min-width: ${(props) => props.theme.breakpoints.m}) {
-    height: 7vw;
+    margin-top: 20px;
     .nav {
-      height: 4vw;
-      display: flex;
-      align-items: center;
+      margin-top: -25px;
       .links {
         transition: 300ms ease-in-out;
         height: 100%;
@@ -89,12 +85,12 @@ const StyledNav = styled.nav<NavProps>`
         width: 100%;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
         justify-content: flex-end;
         background-color: transparent;
         a {
           margin-right: 20px;
-          font-size: 2vw;
+          font-size: 1.7vw;
         }
       }
     }

@@ -14,12 +14,14 @@ const Navbar = () => {
         <div></div>
       </div>
       <div className="logo">
-        <Image src={logo.src} alt="Logo_det_utrolige_teater" fill={true} />
+        <Image src={logo.src} alt="Logo_det_utrolige_teater" fill={true} priority />
       </div>
       <div className="nav">
         <div className="links">
-          <Link href="/">Forside</Link>
-          <Link href="/">Bolig til salg</Link>
+          <Link href="/">FORSIDE</Link>
+          <Link href="/">FORESTILLINGER & EVENTS</Link>
+          <Link href="/">SKUESPILLERE</Link>
+          <Link href="/">MIN SIDE</Link>
         </div>
       </div>
     </StyledNav>
