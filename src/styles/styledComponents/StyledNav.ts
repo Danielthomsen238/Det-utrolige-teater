@@ -76,7 +76,7 @@ const StyledNav = styled.nav<NavProps>`
   @media all and (min-width: ${(props) => props.theme.breakpoints.m}) {
     margin-top: 20px;
     .nav {
-      margin-top: -25px;
+      margin-top: -40px;
       .links {
         transition: 300ms ease-in-out;
         height: 100%;

@@ -6,7 +6,8 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
+  position: relative;
+  min-height: 25vh;
   ul {
     > :nth-child(1) {
       font-size: 5vw;
@@ -33,6 +34,29 @@ const StyledFooter = styled.footer`
         height: 50px;
       }
       color: white;
+    }
+  }
+
+  @media all and (min-width: ${(props) => props.theme.breakpoints.m}) {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    ul {
+      > :nth-child(1) {
+        font-size: 1.2vw;
+      }
+    }
+    div {
+      width: 20vw;
+    }
+    .administration {
+      position: absolute;
+      top: 125px;
+      left: 34.5vw;
+    }
+    .social {
+      margin-right: -10vw;
+      margin-top: 20px;
     }
   }
 `;

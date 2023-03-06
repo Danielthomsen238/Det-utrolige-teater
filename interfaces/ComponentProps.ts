@@ -21,3 +21,15 @@ export interface Event {
   duration_minutes: string;
   price: string;
 }
+
+export interface CardProps {
+  data: {
+    title: string;
+    description: string;
+    genre: string;
+    stage_name: string;
+    image_large: string;
+    startdate: string;
+    stopdate: string;
+  };
+}

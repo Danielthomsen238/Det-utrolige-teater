@@ -4,6 +4,7 @@ import HtmlHead from "../components/Head";
 import Header from "../components/Header";
 import { GridAutoColumnContainer } from "../src/styles/grid/AutoGridColumns";
 import { Event } from "../interfaces/ComponentProps";
+import Card from "../components/Card";
 
 const Home = () => {
   //useState to set the data from the axios fetch
@@ -18,11 +19,18 @@ const Home = () => {
 
   console.log(data);
   return (
-    <>
+    <main>
       <HtmlHead title="Forside" description="Forside Det utrolige teater" />
       <Header />
-      <GridAutoColumnContainer></GridAutoColumnContainer>
-    </>
+      <GridAutoColumnContainer>
+        {data &&
+          data.map((item, idx: number) => {
+            if (idx < 3) {
+              return <Card data={item} />;
+            }
+          })}
+      </GridAutoColumnContainer>
+    </main>
   );
 };
 

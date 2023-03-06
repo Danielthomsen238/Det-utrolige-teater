@@ -20,7 +20,8 @@ html, body {
 
 #__next {
     z-index: -9999;
-    width: 100%;
+    margin: 0 auto;
+    width: 80vw;
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr;
