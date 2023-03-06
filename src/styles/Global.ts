@@ -21,7 +21,7 @@ html, body {
 #__next {
     z-index: -9999;
     margin: 0 auto;
-    width: 80vw;
+    width: 70vw;
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr;
@@ -29,6 +29,8 @@ html, body {
     gap: 5px;
     background-color: ${(props) => props.theme.colors.background};
 
-   
+    @media all and (max-width: 800px) {
+        width: 100vw;
+    }
 }
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledHeader = styled.header`
+  margin-top: 50px;
   div {
     position: relative;
     .info {
@@ -11,7 +12,7 @@ const StyledHeader = styled.header`
       background-color: #eeeee4bf;
       width: 100%;
       height: 100%;
-      border: solid 5px ${(props) => props.theme.colors.primary};
+      border: solid 10px ${(props) => props.theme.colors.primary};
 
       .stage {
         margin-top: 50px;
@@ -47,8 +48,8 @@ const StyledHeader = styled.header`
     .image_wrapper {
       position: relative;
       width: 100%;
-      height: 50vw;
-      border: solid 5px #ad7a51;
+      height: 60vw;
+      border: solid 10px #ad7a51;
     }
   }
   @media all and (min-width: ${(props) => props.theme.breakpoints.m}) {
@@ -66,7 +67,7 @@ const StyledHeader = styled.header`
         height: 30vw;
         .stage {
           font-size: 1.2vw;
-          margin-top: 150px;
+          margin-top: 9vw;
           margin-bottom: 5px;
           margin-right: 20px;
         }
@@ -99,9 +100,9 @@ const StyledHeader = styled.header`
       }
       .image_wrapper {
         position: relative;
-        width: 60vw;
+        width: 50vw;
         height: 30vw;
-        border: solid 5px #ad7a51;
+        border: solid 10px #ad7a51;
       }
     }
   }

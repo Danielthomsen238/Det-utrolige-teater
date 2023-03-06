@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   margin: 0 auto;
-  width: 350px;
+  width: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +10,9 @@ const StyledCard = styled.div`
   border: solid 1px ${(props) => props.theme.colors.secondary};
   .image_wrapper {
     position: relative;
-    width: 350px;
-    height: 350px;
-    border: solid 5px ${(props) => props.theme.colors.secondary};
+    width: 400px;
+    height: 400px;
+    border: solid 10px ${(props) => props.theme.colors.secondary};
   }
   .info {
     text-align: right;
@@ -24,12 +24,12 @@ const StyledCard = styled.div`
     .stage {
       margin-top: 50px;
       margin-bottom: 5px;
-      margin-right: 10px;
+      margin-right: 30px;
     }
     .date {
       position: relative;
       margin-bottom: 20px;
-      margin-right: 10px;
+      margin-right: 30px;
       font-weight: 600;
       &::after {
         position: absolute;
@@ -44,11 +44,11 @@ const StyledCard = styled.div`
 
     .title {
       font-size: 9vw;
-      margin-right: 10px;
+      margin-right: 30px;
       color: ${(props) => props.theme.colors.primary};
     }
     .genre {
-      margin-right: 10px;
+      margin-right: 30px;
       font-size: 4vw;
     }
   }
@@ -79,7 +79,7 @@ const StyledCard = styled.div`
 
       .title {
         font-size: 4vw;
-        margin-right: 10px;
+        margin-right: 30px;
         color: ${(props) => props.theme.colors.primary};
       }
       .genre {
@@ -88,10 +88,11 @@ const StyledCard = styled.div`
     }
   }
   .btn_container {
-    width: 100%;
+    width: 60%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-bottom: 20px;
+    margin-left: 100px;
     button {
       border: none;
       padding: 10px 20px;

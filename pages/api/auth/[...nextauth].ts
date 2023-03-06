@@ -43,8 +43,8 @@ export default NextAuth({
       },
       // @ts-ignore
       async authorize(credentials: Credentials | undefined, req) {
+        console.log("hello");
         if (!credentials) return null;
-
         console.log("credentials", credentials);
         const accessToken = await login(credentials.username, credentials.password);
         // @ts-ignore

@@ -14,15 +14,35 @@ const StyledNav = styled.nav<NavProps>`
     width: 290px;
     height: 120px;
   }
+  .search {
+    position: absolute;
+    top: 0;
+    right: 0;
+    input {
+      padding-left: 5px;
+      width: 150px;
+      border: none;
+      border-bottom: 1px solid lightgray;
+    }
+    button {
+      border: none;
+      border-bottom: 1px solid lightgray;
+      background-color: white;
+      svg {
+        margin-bottom: -5px;
+        color: gray;
+      }
+    }
+  }
   .nav {
     background-color: ${(props) => props.theme.colors.background};
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     .links {
-      margin-top: 20px;
+      margin-top: 10px;
       transition: 300ms ease-in-out;
-      height: ${(props) => (props.show ? "30vw" : "0vw")};
+      height: ${(props) => (props.show ? "25vw" : "0vw")};
       overflow: hidden;
       z-index: 5;
       width: 100%;
@@ -30,6 +50,14 @@ const StyledNav = styled.nav<NavProps>`
       flex-direction: column;
       align-items: center;
       a {
+        font-size: 5vw;
+        color: #707070;
+        &:hover {
+          color: #d39d5b;
+        }
+      }
+      p {
+        cursor: pointer;
         font-size: 5vw;
         color: #707070;
         &:hover {
@@ -44,7 +72,7 @@ const StyledNav = styled.nav<NavProps>`
     width: 40px;
     z-index: 6;
     position: absolute;
-    top: 40%;
+    top: 30%;
     right: 15px;
     display: flex;
     flex-direction: column;
@@ -73,7 +101,8 @@ const StyledNav = styled.nav<NavProps>`
       transform: ${(props) => (props.show ? "rotate(-50deg)" : "rotate(0deg)")};
     }
   }
-  @media all and (min-width: ${(props) => props.theme.breakpoints.m}) {
+
+  @media all and (min-width: 1450px) {
     margin-top: 20px;
     .nav {
       margin-top: -40px;
@@ -91,6 +120,13 @@ const StyledNav = styled.nav<NavProps>`
         a {
           margin-right: 20px;
           font-size: 1.7vw;
+        }
+        p {
+          font-size: 1.7vw;
+          color: #707070;
+          &:hover {
+            color: #d39d5b;
+          }
         }
       }
     }

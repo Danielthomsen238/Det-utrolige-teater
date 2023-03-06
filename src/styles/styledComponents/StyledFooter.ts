@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
+  margin-top: 50px;
   background-color: ${(props) => props.theme.colors.tetiear};
   display: flex;
   flex-direction: column;
@@ -47,12 +48,12 @@ const StyledFooter = styled.footer`
       }
     }
     div {
-      width: 20vw;
+      width: 15vw;
     }
     .administration {
       position: absolute;
       top: 125px;
-      left: 34.5vw;
+      left: 24.5vw;
     }
     .social {
       margin-right: -10vw;
