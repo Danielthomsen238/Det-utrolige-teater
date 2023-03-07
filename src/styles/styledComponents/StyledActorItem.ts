@@ -23,6 +23,7 @@ const StyledActorItem = styled.div`
     }
     width: 50%;
   }
+
   &:after {
     position: absolute;
     content: "";
@@ -32,6 +33,7 @@ const StyledActorItem = styled.div`
     height: 1px;
     width: 96%;
   }
+
   a {
     align-self: flex-end;
     margin-bottom: 20px;

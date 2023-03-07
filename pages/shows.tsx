@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import HtmlHead from "../components/Head";
-import Header from "../components/Header";
 import { StyledListShows } from "../src/styles/styledComponents/StyledListShows";
 import { StyledShows } from "../src/styles/styledComponents/StyledMain";
 import { StyledShowsTopBar } from "../src/styles/styledComponents/StyledShowsTopBar";

@@ -28,7 +28,7 @@ const ActorItem = (props: ActorItemProps) => {
           <h2>{name.toUpperCase()}</h2>
           <p>{smallDescription}</p>
         </div>
-        <Link href="/">LÆS MERE</Link>
+        <Link href={`/actors/${id}`}>LÆS MERE</Link>
       </StyledActorItem>
     );
   } else {
@@ -49,7 +49,7 @@ const ActorItem = (props: ActorItemProps) => {
           <h2>{name.toUpperCase()}</h2>
           <p>{description}</p>
         </div>
-        <Link href="/">LÆS MERE</Link>
+        <Link href={`/actors/${id}`}>LÆS MERE</Link>
       </StyledActorItem>
     );
   }
