@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  min-height: 25vh;
+  min-height: 30vh;
   ul {
     > :nth-child(1) {
       font-size: 5vw;

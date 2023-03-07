@@ -5,19 +5,35 @@ import Image from "next/image";
 import logo from "../src/images/logo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import { toggleLogin, useLogin } from "../helpers/useLogin";
-import { getCsrfToken, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
 
 /*
 Navbar component
 using zustand toggle function to control the burger menu
 */
-const Navbar = ({ csrfToken }: any) => {
+const Navbar = () => {
   const { data: session, status } = useSession();
   const { switchToggle, toggle } = useSwitch() as Switch;
   const { showLogin, toggleLogin } = useLogin() as toggleLogin;
-  console.log(session);
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  //handle login function that checks if user have typed in username and password before sending a request to login
+  const handleLogin = () => {
+    if (!username) {
+      alert("Please enter your username");
+      return;
+    }
+    if (!password) {
+      alert("Please enter your password");
+      return;
+    }
+    toggleLogin();
+    signIn("credentials", { username, password });
+  };
   return (
-    <StyledNav show={toggle}>
+    <StyledNav showBurger={toggle} showLogin={showLogin}>
       <div className="burger" onClick={() => switchToggle()}>
         <div></div>
         <div></div>
@@ -29,42 +45,26 @@ const Navbar = ({ csrfToken }: any) => {
       <div className="nav">
         <div className="links">
           <Link href="/">FORSIDE</Link>
-          <Link href="/">FORESTILLINGER & EVENTS</Link>
-          <Link href="/">SKUESPILLERE</Link>
-          <p onClick={() => toggleLogin()}>LOGIN</p>
+          <Link href="/shows">FORESTILLINGER & EVENTS</Link>
+          <Link href="/actors">SKUESPILLERE</Link>
+          {status === "authenticated" ? <Link href="/">MIN SIDE</Link> : <p onClick={() => toggleLogin()}>LOGIN</p>}
         </div>
       </div>
       <div className="login">
-        <form method="post" action="/api/auth/callback/credentials">
-          <h1>Login</h1>
-          <p>Indtast brugernavn og adgangskode for at logge på</p>
-          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-          <label className="Username">
-            Brugernavn:
-            <input className="username" name="username" type="text" />
-          </label>
-          <label className="Password">
-            Adgangskode:
-            <input className="password" name="password" type="password" />
-          </label>
-          <button type="submit">Login</button>
-        </form>
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <div>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <button onClick={() => handleLogin()}>Login</button>
+        </div>
       </div>
       <div className="search">
         <input type="text" placeholder="INDTAST SØGEORD" />
-        <button>
+        <button aria-label="search_button">
           <SearchIcon />
         </button>
       </div>
     </StyledNav>
   );
 };
-export async function getServerSideProps(context: any) {
-  const csrfToken = await getCsrfToken(context);
-  return {
-    props: {
-      csrfToken: csrfToken || null,
-    },
-  };
-}
+
 export default Navbar;

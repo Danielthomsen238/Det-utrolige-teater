@@ -33,3 +33,19 @@ export interface CardProps {
     stopdate: string;
   };
 }
+
+export interface Actor {
+  id: string;
+  name: string;
+  image: string;
+  description: string;
+}
+
+export interface ActorItemProps {
+  data: {
+    id: string;
+    name: string;
+    image: string;
+    description: string;
+  };
+}

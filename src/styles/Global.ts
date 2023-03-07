@@ -21,14 +21,14 @@ html, body {
 #__next {
     z-index: -9999;
     margin: 0 auto;
-    width: 70vw;
+    width: 75vw;
     min-height: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto minmax(100vh, auto) auto;
+    grid-template-rows: ${(props) => props.rows};
     gap: 5px;
     background-color: ${(props) => props.theme.colors.background};
-
+    overflow-y: hidden;
     @media all and (max-width: 800px) {
         width: 100vw;
     }

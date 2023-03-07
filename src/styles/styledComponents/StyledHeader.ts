@@ -48,7 +48,7 @@ const StyledHeader = styled.header`
     .image_wrapper {
       position: relative;
       width: 100%;
-      height: 60vw;
+      height: 62.5vw;
       border: solid 10px #ad7a51;
     }
   }
@@ -57,7 +57,7 @@ const StyledHeader = styled.header`
       position: relative;
       display: flex;
       .info {
-        width: 20vw;
+        width: 22.5vw;
         position: static;
         flex-direction: column;
         background-color: white;
@@ -89,7 +89,7 @@ const StyledHeader = styled.header`
         }
 
         .title {
-          font-size: 5vw;
+          font-size: 4vw;
           margin-right: 20px;
           color: ${(props) => props.theme.colors.secondary};
         }
@@ -100,7 +100,7 @@ const StyledHeader = styled.header`
       }
       .image_wrapper {
         position: relative;
-        width: 50vw;
+        width: 52.5vw;
         height: 30vw;
         border: solid 10px #ad7a51;
       }

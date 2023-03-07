@@ -15,7 +15,7 @@ const Auth = ({ children }: any) => {
   const router = useRouter();
   useEffect(() => {
     if (!loading && !hasUser) {
-      router.push("/login?callbackUrl=http%3A%2F%2Flocalhost%3A4200");
+      router.push("/login?callbackUrl=http%3A%2F%2Flocalhost%3A3000");
     }
   }, [loading, hasUser]);
   if (loading || !hasUser) {

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { StyledHeader } from "../src/styles/styledComponents/StyledHeader";
 import { Event } from "../interfaces/ComponentProps";
+import Animate from "./animate";
 
 /*Header component */
 const Header = () => {
@@ -17,43 +18,53 @@ const Header = () => {
   }, []);
 
   return (
-    <StyledHeader>
-      {data &&
-        data.map((item, idx: number) => {
-          if (idx === 0) {
-            /*Here i use the toLocaleDateString method to convert the start and end date to another format*/
-            const startDateString = item.startdate;
-            const endDateString = item.stopdate;
-            const startDate = new Date(startDateString);
-            const endDate = new Date(endDateString);
-            const formattedStartDate = startDate.toLocaleDateString("da-DK", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            });
-            const formattedEndDate = endDate.toLocaleDateString("da-DK", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            });
-            return (
-              <div key={idx}>
-                <div className="info">
-                  <p className="stage">{item.stage_name.toUpperCase()}</p>
-                  <p className="date">
-                    {formattedStartDate.toUpperCase()} - {formattedEndDate.toUpperCase()}
-                  </p>
-                  <p className="title">{item.title}</p>
-                  <p className="genre">{item.genre}</p>
+    <Animate>
+      <StyledHeader>
+        {data &&
+          data.map((item, idx: number) => {
+            if (idx === 0) {
+              /*Here i use the toLocaleDateString method to convert the start and end date to another format*/
+              const startDateString = item.startdate;
+              const endDateString = item.stopdate;
+              const startDate = new Date(startDateString);
+              const endDate = new Date(endDateString);
+              const formattedStartDate = startDate.toLocaleDateString("da-DK", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              });
+              const formattedEndDate = endDate.toLocaleDateString("da-DK", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              });
+              return (
+                <div key={idx}>
+                  <div className="info">
+                    <p className="stage">{item.stage_name.toUpperCase()}</p>
+                    <p className="date">
+                      {formattedStartDate.toUpperCase()} - {formattedEndDate.toUpperCase()}
+                    </p>
+                    <p className="title">{item.title}</p>
+                    <p className="genre">{item.genre}</p>
+                  </div>
+                  <div className="image_wrapper">
+                    <Image
+                      src={item.image_large}
+                      alt={item.title}
+                      fill
+                      priority
+                      sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+                    />
+                  </div>
                 </div>
-                <div className="image_wrapper">
-                  <Image src={item.image_large} alt={item.title} fill />
-                </div>
-              </div>
-            );
-          }
-        })}
-    </StyledHeader>
+              );
+            }
+          })}
+      </StyledHeader>
+    </Animate>
   );
 };
 

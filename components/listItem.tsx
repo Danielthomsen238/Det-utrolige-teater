@@ -1,9 +1,10 @@
-import Image from "next/image";
+import { StyledListItem } from "../src/styles/styledComponents/StyledListItem";
 import { CardProps } from "../interfaces/ComponentProps";
-import { StyledCard } from "../src/styles/styledComponents/StyledCard";
+import Image from "next/image";
+import Link from "next/link";
 
-const Card = (props: CardProps) => {
-  const { image_large, startdate, stopdate, stage_name, title, genre } = props.data;
+const ListItem = (props: CardProps) => {
+  const { image_large, title, stage_name, startdate, stopdate } = props.data;
 
   /*Here i use the toLocaleDateString method to convert the start and end date to another format*/
   const startDateString = startdate;
@@ -22,7 +23,7 @@ const Card = (props: CardProps) => {
   });
 
   return (
-    <StyledCard>
+    <StyledListItem>
       <div className="image_wrapper">
         <Image
           src={image_large}
@@ -35,19 +36,23 @@ const Card = (props: CardProps) => {
         />
       </div>
       <div className="info">
-        <p className="stage">{stage_name.toUpperCase()}</p>
-        <p className="date">
-          {formattedStartDate.toUpperCase()} - {formattedEndDate.toUpperCase()}
-        </p>
-        <p className="title">{title}</p>
-        <p className="genre">{genre.toUpperCase()}</p>
+        <div className="title">
+          <p>{title}</p>
+        </div>
+
+        <div className="date_stage">
+          <p className="stage">{stage_name.toUpperCase()}</p>
+          <p className="date">
+            {formattedStartDate.toUpperCase()} - {formattedEndDate.toUpperCase()}
+          </p>
+        </div>
       </div>
       <div className="btn_container">
-        <button>LÆS MERE</button>
-        <button>KØB BILLET</button>
+        <Link href="/">LÆS MERE</Link>
+        <Link href="/">KØB BILLET</Link>
       </div>
-    </StyledCard>
+    </StyledListItem>
   );
 };
 
-export default Card;
+export default ListItem;

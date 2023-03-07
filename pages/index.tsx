@@ -5,6 +5,9 @@ import Header from "../components/Header";
 import { GridAutoColumnContainer } from "../src/styles/grid/AutoGridColumns";
 import { Event } from "../interfaces/ComponentProps";
 import Card from "../components/Card";
+import Link from "next/link";
+import { StyledHome } from "../src/styles/styledComponents/StyledMain";
+import Animate from "../components/animate";
 
 const Home = () => {
   //useState to set the data from the axios fetch
@@ -19,18 +22,23 @@ const Home = () => {
 
   console.log(data);
   return (
-    <main>
-      <HtmlHead title="Forside" description="Forside Det utrolige teater" />
-      <Header />
-      <GridAutoColumnContainer>
-        {data &&
-          data.map((item, idx: number) => {
-            if (idx < 3) {
-              return <Card data={item} />;
-            }
-          })}
-      </GridAutoColumnContainer>
-    </main>
+    <Animate>
+      <StyledHome>
+        <HtmlHead title="Forside" description="Forside Det utrolige teater" />
+        <h1>Forside det utrolige teater</h1>
+        <GridAutoColumnContainer>
+          {data &&
+            data.map((item, idx: number) => {
+              if (idx < 3) {
+                return <Card key={idx} data={item} />;
+              }
+            })}
+        </GridAutoColumnContainer>
+        <div>
+          <Link href="/shows">SE ALLE FORESTILLINGER</Link>
+        </div>
+      </StyledHome>
+    </Animate>
   );
 };
 

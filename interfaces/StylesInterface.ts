@@ -18,6 +18,7 @@ export interface Global {
       border: string;
     };
   };
+  rows?: string;
 }
 
 export interface DefaultTheme {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   margin: 0 auto;
-  width: 400px;
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,8 @@ const StyledCard = styled.div`
   border: solid 1px ${(props) => props.theme.colors.secondary};
   .image_wrapper {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
     border: solid 10px ${(props) => props.theme.colors.secondary};
   }
   .info {
@@ -88,11 +88,11 @@ const StyledCard = styled.div`
     }
   }
   .btn_container {
-    width: 60%;
+    width: 70%;
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    margin-left: 100px;
+    margin-left: 50px;
     button {
       border: none;
       padding: 10px 20px;

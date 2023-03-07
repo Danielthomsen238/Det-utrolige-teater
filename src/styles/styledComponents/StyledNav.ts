@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 interface NavProps {
-  show: boolean;
+  showBurger: boolean;
+  showLogin: boolean;
 }
 
 const StyledNav = styled.nav<NavProps>`
@@ -13,6 +14,32 @@ const StyledNav = styled.nav<NavProps>`
     position: relative;
     width: 290px;
     height: 120px;
+  }
+  .login {
+    display: ${(props) => (props.showLogin ? "block" : "none")};
+    position: absolute;
+    top: 200px;
+    z-index: 10;
+    right: 20%;
+    background-color: ${(props) => props.theme.colors.secondary};
+    padding: 20px 20px;
+    input {
+      height: 30px;
+    }
+    div {
+      margin-top: 5px;
+      input {
+        height: 30px;
+        margin-right: 5px;
+      }
+      button {
+        background-color: #61e692;
+        border: none;
+        height: 30px;
+        padding: 0 10px;
+        cursor: pointer;
+      }
+    }
   }
   .search {
     position: absolute;
@@ -42,7 +69,7 @@ const StyledNav = styled.nav<NavProps>`
     .links {
       margin-top: 10px;
       transition: 300ms ease-in-out;
-      height: ${(props) => (props.show ? "25vw" : "0vw")};
+      height: ${(props) => (props.showBurger ? "25vw" : "0vw")};
       overflow: hidden;
       z-index: 5;
       width: 100%;
@@ -86,24 +113,49 @@ const StyledNav = styled.nav<NavProps>`
     }
     > :nth-child(1) {
       position: absolute;
-      bottom: ${(props) => (props.show ? "10px" : "0px")};
-      transform: ${(props) => (props.show ? "rotate(50deg)" : "rotate(0deg)")};
+      bottom: ${(props) => (props.showBurger ? "10px" : "0px")};
+      transform: ${(props) => (props.showBurger ? "rotate(50deg)" : "rotate(0deg)")};
     }
     > :nth-child(2) {
       position: absolute;
       bottom: 10px;
       right: 0px;
-      opacity: ${(props) => (props.show ? "0" : "1")};
+      opacity: ${(props) => (props.showBurger ? "0" : "1")};
     }
     > :nth-child(3) {
       position: absolute;
-      bottom: ${(props) => (props.show ? "10px" : "20px")};
-      transform: ${(props) => (props.show ? "rotate(-50deg)" : "rotate(0deg)")};
+      bottom: ${(props) => (props.showBurger ? "10px" : "20px")};
+      transform: ${(props) => (props.showBurger ? "rotate(-50deg)" : "rotate(0deg)")};
     }
   }
 
   @media all and (min-width: 1450px) {
     margin-top: 20px;
+    .login {
+      position: absolute;
+      top: 50px;
+      z-index: 10;
+      right: 0;
+      background-color: ${(props) => props.theme.colors.secondary};
+      padding: 20px 20px;
+      input {
+        height: 30px;
+      }
+      div {
+        margin-top: 5px;
+        input {
+          height: 30px;
+          margin-right: 5px;
+        }
+        button {
+          background-color: #61e692;
+          border: none;
+          height: 30px;
+          padding: 0 10px;
+          cursor: pointer;
+        }
+      }
+    }
     .nav {
       margin-top: -40px;
       .links {
@@ -130,6 +182,7 @@ const StyledNav = styled.nav<NavProps>`
         }
       }
     }
+
     .burger {
       display: none;
     }
