@@ -9,6 +9,20 @@ const StyledListItem = styled.div`
   .btn_container {
     position: absolute;
     right: 0;
+    width: 250px;
+    display: flex;
+    justify-content: space-evenly;
+    top: 35%;
+    a {
+      padding: 10px 10px;
+      color: white;
+    }
+    > :nth-child(1) {
+      background-color: ${(props) => props.theme.colors.tetiear};
+    }
+    > :nth-child(2) {
+      background-color: ${(props) => props.theme.colors.primary};
+    }
   }
   .info {
     width: 30vw;
@@ -29,6 +43,19 @@ const StyledListItem = styled.div`
     border: solid 5px ${(props) => props.theme.colors.secondary};
     width: 100px;
     height: 100px;
+  }
+  @media all and (max-width: 1200px) {
+    height: 500px;
+    width: fit-content;
+    flex-direction: column;
+    .btn_container {
+      top: 450px;
+    }
+    .image_wrapper {
+      margin: 0 auto;
+      width: 300px;
+      height: 250px;
+    }
   }
 `;
 

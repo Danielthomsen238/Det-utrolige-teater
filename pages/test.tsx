@@ -9,7 +9,7 @@ const Test = () => {
   // Fetch the data from the API when the component mounts
   useEffect(() => {
     axios
-      .get(`https://api.mediehuset.net/detutroligeteater/seats/3`)
+      .get(`https://api.mediehuset.net/detutroligeteater/seats/2`)
       .then((r) => setData(r.data.items))
       .catch((e) => console.log(e));
   }, []);
@@ -22,25 +22,28 @@ const Test = () => {
     line[item.line].push(item);
     return line;
   }, {});
-  console.log(groupedData);
+
   return (
-    // Render the seats using Styled Components and passing the length of the array to the styled-component
-    <StyledTest length={Object.keys(groupedData).length}>
-      {/*First check if the groupData is not undefined,
+    <>
+      {groupedData && ( // Render the seats using Styled Components and passing the length of the array to the styled-component
+        <StyledTest length={Object.keys(groupedData).length}>
+          {/*First check if the groupData is not undefined,
        then map over the entries for each entry, it creates a new div element with the line number
         and inside it maps over the seats in the current line
        */}
-      {groupedData &&
-        Object.entries(groupedData).map(([line, seats]: any) => (
-          <div key={line}>
-            {seats.map((seat: any) => (
-              <StyledSeat isReserved={seat.is_reserved} key={seat.id}>
-                {seat.number}
-              </StyledSeat>
+          {groupedData &&
+            Object.entries(groupedData).map(([line, seats]: any) => (
+              <div className={`line_${line}`} key={line}>
+                {seats.map((seat: any) => (
+                  <StyledSeat isReserved={seat.is_reserved} key={seat.id}>
+                    {seat.number}
+                  </StyledSeat>
+                ))}
+              </div>
             ))}
-          </div>
-        ))}
-    </StyledTest>
+        </StyledTest>
+      )}
+    </>
   );
 };
 

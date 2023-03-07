@@ -7,11 +7,12 @@ const StyledTest = styled.main<Lines>`
   width: 700px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
   div {
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    margin-bottom: 5px;
   }
   /* First half of the seats
   i loop over the first half seats and use margin to incrementaly move them down to create a half ellipse kinda shape
@@ -24,7 +25,7 @@ const StyledTest = styled.main<Lines>`
     let styles = "";
 
     for (let i = 0; i < halfLength; i++) {
-      styles += `div:nth-child(${i + 1}) {  margin-top: ${margin}px; } `;
+      styles += `.line_${i + 1} {  margin-top: ${margin}px; } `;
       margin += marginStep;
     }
 
@@ -42,7 +43,7 @@ const StyledTest = styled.main<Lines>`
     let styles = "";
 
     for (let i = halfLength; i < length; i++) {
-      styles += `div:nth-child(${i + 1}) {  margin-top: ${margin}px; } `;
+      styles += `.line_${i + 1} {  margin-top: ${margin}px; } `;
       margin -= marginStep;
     }
 

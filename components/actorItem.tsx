@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ActorItemProps } from "../interfaces/ComponentProps";
 import { StyledActorItem } from "../src/styles/styledComponents/StyledActorItem";
 
@@ -27,6 +28,7 @@ const ActorItem = (props: ActorItemProps) => {
           <h2>{name.toUpperCase()}</h2>
           <p>{smallDescription}</p>
         </div>
+        <Link href="/">LÆS MERE</Link>
       </StyledActorItem>
     );
   } else {
@@ -47,6 +49,7 @@ const ActorItem = (props: ActorItemProps) => {
           <h2>{name.toUpperCase()}</h2>
           <p>{description}</p>
         </div>
+        <Link href="/">LÆS MERE</Link>
       </StyledActorItem>
     );
   }

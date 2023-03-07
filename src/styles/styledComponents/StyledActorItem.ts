@@ -5,12 +5,14 @@ const StyledActorItem = styled.div`
   margin-top: 20px;
   display: flex;
   padding: 20px;
+  justify-content: space-between;
   .image_wrapper {
     position: relative;
     width: 300px;
     height: 300px;
   }
   .info {
+    padding: 0 20px;
     h2 {
       color: gray;
       font-weight: 500;
@@ -19,7 +21,6 @@ const StyledActorItem = styled.div`
     p {
       color: ${(props) => props.theme.colors.primary};
     }
-    margin-left: 20px;
     width: 50%;
   }
   &:after {
@@ -31,8 +32,15 @@ const StyledActorItem = styled.div`
     height: 1px;
     width: 96%;
   }
+  a {
+    align-self: flex-end;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: ${(props) => props.theme.colors.tetiear};
+    color: white;
+  }
 
-  @media all and (max-width: 600px) {
+  @media all and (max-width: 1200px) {
     margin: 0 auto;
     flex-direction: column;
     justify-content: center;
@@ -40,6 +48,14 @@ const StyledActorItem = styled.div`
     .info {
       margin-top: 20px;
       width: 90%;
+      h2 {
+        text-align: center;
+      }
+    }
+
+    a {
+      margin-top: 50px;
+      align-self: center;
     }
   }
 `;
