@@ -26,6 +26,15 @@ const StyledShowDetail = styled.main`
       width: 100%;
       height: 40vw;
       border: solid 15px ${(props) => props.theme.colors.secondary};
+      svg {
+        top: 2vw;
+        right: 2vw;
+        position: absolute;
+        z-index: 20;
+        width: 3vw;
+        height: 3vw;
+        color: ${(props) => props.theme.colors.primary};
+      }
     }
     .top_info {
       margin: 0 auto;

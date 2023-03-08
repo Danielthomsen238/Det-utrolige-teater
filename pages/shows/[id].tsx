@@ -6,6 +6,7 @@ import HtmlHead from "../../components/Head";
 import { EventDetail } from "../../interfaces/ComponentProps";
 import { StyledShowDetail } from "../../src/styles/styledComponents/StyledMain";
 import Image from "next/image";
+import Favorite from "../../components/Favorite";
 
 const ShowDetail = () => {
   const router = useRouter();
@@ -41,6 +42,7 @@ const ShowDetail = () => {
           <StyledShowDetail>
             <section className="container">
               <div className="image_wrapper">
+                <Favorite event_id={data.id} />
                 <Image
                   src={data.image_large}
                   alt={data.title}
