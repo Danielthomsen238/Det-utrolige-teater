@@ -30,7 +30,7 @@ html, body {
     background-color: ${(props) => props.theme.colors.background};
     overflow-y: hidden;
     @media all and (max-width: 800px) {
-        width: 100vw;
+        width: 100%;
     }
 }
 `;

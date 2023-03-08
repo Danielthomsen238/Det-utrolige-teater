@@ -25,7 +25,6 @@ const Home = () => {
     <Animate>
       <StyledHome>
         <HtmlHead title="Forside" description="Forside Det utrolige teater" />
-        <h1>Forside det utrolige teater</h1>
         <GridAutoColumnContainer>
           {data &&
             data.map((item, idx: number) => {
@@ -35,7 +34,9 @@ const Home = () => {
             })}
         </GridAutoColumnContainer>
         <div>
-          <Link href="/shows">SE ALLE FORESTILLINGER</Link>
+          <Link className="see_all_events" href="/shows">
+            SE ALLE FORESTILLINGER
+          </Link>
         </div>
       </StyledHome>
     </Animate>

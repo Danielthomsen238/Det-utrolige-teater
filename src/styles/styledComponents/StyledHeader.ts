@@ -63,7 +63,7 @@ const StyledHeader = styled.header`
         background-color: white;
         text-align: right;
         color: black;
-        border: solid 1px ${(props) => props.theme.colors.primary};
+        border: solid 1px ${(props) => props.theme.colors.secondary};
         height: 30vw;
         .stage {
           font-size: 1.2vw;
@@ -83,15 +83,16 @@ const StyledHeader = styled.header`
             right: 0;
             content: "";
             width: 17vw;
-            height: 2px;
+            height: 1px;
             background-color: lightgray;
           }
         }
 
         .title {
           font-size: 4vw;
+          font-weight: 400;
           margin-right: 20px;
-          color: ${(props) => props.theme.colors.secondary};
+          color: ${(props) => props.theme.colors.primary};
         }
         .genre {
           margin-right: 20px;

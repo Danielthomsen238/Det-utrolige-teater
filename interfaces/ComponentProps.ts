@@ -24,6 +24,7 @@ export interface Event {
 
 export interface CardProps {
   data: {
+    id: string;
     title: string;
     description: string;
     genre: string;
@@ -48,4 +49,24 @@ export interface ActorItemProps {
     image: string;
     description: string;
   };
+}
+
+export interface EventDetail {
+  actors: Actor[];
+  id: string;
+  title: string;
+  description: string;
+  genre: string;
+  genre_id: string;
+  image: string;
+  image_large: string;
+  image_medium: string;
+  image_small: string;
+  stage_id: string;
+  stage_name: string;
+  duration_minutes: string;
+  price: string;
+  startdate: string;
+  starttime: string;
+  stopdate: string;
 }

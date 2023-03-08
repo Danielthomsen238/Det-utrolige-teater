@@ -72,7 +72,7 @@ const StyledCard = styled.div`
           right: 0;
           content: "";
           width: 270px;
-          height: 2px;
+          height: 1px;
           background-color: lightgray;
         }
       }
@@ -91,11 +91,12 @@ const StyledCard = styled.div`
     width: 70%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     margin-left: 50px;
-    button {
+    a {
       border: none;
-      padding: 10px 20px;
+      padding: 10px 10px;
       color: white;
     }
     > :nth-child(1) {

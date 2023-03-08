@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { CardProps } from "../interfaces/ComponentProps";
 import { StyledCard } from "../src/styles/styledComponents/StyledCard";
 
 const Card = (props: CardProps) => {
-  const { image_large, startdate, stopdate, stage_name, title, genre } = props.data;
+  const { id, image_large, startdate, stopdate, stage_name, title, genre } = props.data;
 
   /*Here i use the toLocaleDateString method to convert the start and end date to another format*/
   const startDateString = startdate;
@@ -43,8 +44,8 @@ const Card = (props: CardProps) => {
         <p className="genre">{genre.toUpperCase()}</p>
       </div>
       <div className="btn_container">
-        <button>LÆS MERE</button>
-        <button>KØB BILLET</button>
+        <Link href={`/shows/${id}`}>LÆS MERE</Link>
+        <Link href={`/`}>KØB BILLET</Link>
       </div>
     </StyledCard>
   );

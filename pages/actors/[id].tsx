@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Animate from "../../components/animate";
-import { StyledActorItem } from "../../src/styles/styledComponents/StyledActorItem";
+import { Actor } from "../../interfaces/ComponentProps";
 import { StyledActorsDetail } from "../../src/styles/styledComponents/StyledMain";
 
 const ActorDetail = () => {
   const router = useRouter();
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<Actor>();
   useEffect(() => {
     axios
       .get(`https://api.mediehuset.net/detutroligeteater/actors/${router.query.id}`)
@@ -17,7 +17,7 @@ const ActorDetail = () => {
       .catch((e) => console.error(e));
   }, [router.query.id]);
   console.log(data);
-
+  let string = "Hello Hello";
   return (
     <Animate>
       <StyledActorsDetail>
@@ -35,8 +35,8 @@ const ActorDetail = () => {
               />
             </div>
             <div className="info">
-              <h2>{data.name.toUpperCase()}</h2>
-              <p>{data.description}</p>
+              <h1>{data.name.toUpperCase()}</h1>
+              <pre>{data.description}</pre>
             </div>
             <Link href={`/actors`}>ALLE SKUESPILLERE</Link>
           </div>

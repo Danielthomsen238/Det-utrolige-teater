@@ -45,7 +45,7 @@ const Header = () => {
                     <p className="date">
                       {formattedStartDate.toUpperCase()} - {formattedEndDate.toUpperCase()}
                     </p>
-                    <p className="title">{item.title}</p>
+                    <h1 className="title">{item.title}</h1>
                     <p className="genre">{item.genre}</p>
                   </div>
                   <div className="image_wrapper">

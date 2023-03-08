@@ -5,7 +5,7 @@ const StyledHome = styled.main`
   h1 {
     display: none;
   }
-  a {
+  .see_all_events {
     position: absolute;
     bottom: -50px;
     right: 0;
@@ -16,6 +16,27 @@ const StyledHome = styled.main`
   }
 `;
 const StyledShows = styled.main``;
+
+const StyledShowDetail = styled.main`
+  margin-top: 50px;
+  .container {
+    border: solid 1px ${(props) => props.theme.colors.secondary};
+    .image_wrapper {
+      position: relative;
+      width: 100%;
+      height: 40vw;
+      border: solid 15px ${(props) => props.theme.colors.secondary};
+    }
+    .top_info {
+      margin: 0 auto;
+      width: 73vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: solid 1px lightgray;
+    }
+  }
+`;
 
 const StyledActorsDetail = styled.main`
   min-height: 10vh;
@@ -33,15 +54,16 @@ const StyledActorsDetail = styled.main`
     }
     .info {
       padding: 0 20px;
-      h2 {
+      h1 {
         color: gray;
-        font-weight: 500;
+        font-weight: 400;
         margin-bottom: 20px;
       }
-      p {
+      pre {
+        white-space: pre-wrap;
         color: ${(props) => props.theme.colors.primary};
       }
-      width: 65%;
+      width: 70%;
     }
   }
 
@@ -75,10 +97,12 @@ const StyledActors = styled.main`
   min-height: 100vh;
   margin-top: 50px;
   h1 {
-    margin-left: 20px;
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 40px;
     color: ${(props) => props.theme.colors.primary};
   }
   border: solid 2px ${(props) => props.theme.colors.secondary};
 `;
 
-export { StyledHome, StyledShows, StyledActors, StyledActorsDetail };
+export { StyledHome, StyledShows, StyledActors, StyledActorsDetail, StyledShowDetail };

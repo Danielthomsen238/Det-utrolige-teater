@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ListItem = (props: CardProps) => {
-  const { image_large, title, stage_name, startdate, stopdate } = props.data;
+  const { id, image_large, title, stage_name, startdate, stopdate } = props.data;
 
   /*Here i use the toLocaleDateString method to convert the start and end date to another format*/
   const startDateString = startdate;
@@ -48,7 +48,7 @@ const ListItem = (props: CardProps) => {
         </div>
       </div>
       <div className="btn_container">
-        <Link href="/">LÆS MERE</Link>
+        <Link href={`/shows/${id}`}>LÆS MERE</Link>
         <Link href="/">KØB BILLET</Link>
       </div>
     </StyledListItem>
