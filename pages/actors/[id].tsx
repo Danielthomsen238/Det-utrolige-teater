@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Animate from "../../components/animate";
+import Animate from "../../components/Animate";
 import { Actor } from "../../interfaces/ComponentProps";
 import { StyledActorsDetail } from "../../src/styles/styledComponents/StyledMain";
 

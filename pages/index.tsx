@@ -7,7 +7,7 @@ import { Event } from "../interfaces/ComponentProps";
 import Card from "../components/Card";
 import Link from "next/link";
 import { StyledHome } from "../src/styles/styledComponents/StyledMain";
-import Animate from "../components/animate";
+import Animate from "../components/Animate";
 
 const Home = () => {
   //useState to set the data from the axios fetch

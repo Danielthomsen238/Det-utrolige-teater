@@ -2,7 +2,7 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../src/styles/themes/MainThemes";
 import { GlobalStyles } from "../src/styles/Global";
-import Auth from "../components/auth";
+import Auth from "../components/Auth";
 import "../src/styles/GlobalStyles.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";

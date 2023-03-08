@@ -44,6 +44,60 @@ const StyledShowDetail = styled.main`
       align-items: center;
       border-bottom: solid 1px lightgray;
     }
+    .info {
+      padding: 1vw;
+      .title_buy_ticket {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .description {
+        margin-top: 1vw;
+        white-space: pre-wrap;
+        color: ${(props) => props.theme.colors.primary};
+      }
+      .duration {
+        margin-top: 1vw;
+        color: ${(props) => props.theme.colors.primary};
+      }
+    }
+    .actors_h2 {
+      padding-left: 1vw;
+      padding-bottom: 20px;
+      font-weight: 400;
+    }
+    .actors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 20px;
+      border-bottom: dashed 1px ${(props) => props.theme.colors.primary};
+      .actor_item {
+        .actor_img_wrapper {
+          position: relative;
+          width: 175px;
+          height: 175px;
+        }
+        text-align: center;
+        border: solid 1px ${(props) => props.theme.colors.primary};
+        .actor_name {
+          width: 175px;
+          padding: 10px 0;
+          color: ${(props) => props.theme.colors.primary};
+          font-size: 20px;
+        }
+      }
+    }
+    .reviews {
+      padding: 1vw;
+      h2 {
+        margin: 0;
+        font-weight: 400;
+        margin-top: 20px;
+        border-bottom: solid 1px lightgray;
+      }
+    }
   }
 `;
 

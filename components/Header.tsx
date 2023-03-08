@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { StyledHeader } from "../src/styles/styledComponents/StyledHeader";
 import { Event } from "../interfaces/ComponentProps";
-import Animate from "./animate";
+import Animate from "./Animate";
 
 /*Header component */
 const Header = () => {

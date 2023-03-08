@@ -5,8 +5,8 @@ import { StyledShows } from "../src/styles/styledComponents/StyledMain";
 import { StyledShowsTopBar } from "../src/styles/styledComponents/StyledShowsTopBar";
 import { Event } from "../interfaces/ComponentProps";
 import axios from "axios";
-import ListItem from "../components/listItem";
-import Animate from "../components/animate";
+import ListItem from "../components/ListItem";
+import Animate from "../components/Animate";
 
 const Shows = () => {
   const [selectedOption, setSelectedOption] = useState<string>("filter");

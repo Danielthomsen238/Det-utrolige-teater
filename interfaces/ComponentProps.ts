@@ -70,3 +70,25 @@ export interface EventDetail {
   starttime: string;
   stopdate: string;
 }
+
+export interface Reviews {
+  event_id: string;
+  event_title: string;
+  stage_name: string;
+  subject: string;
+  num_stars: string;
+  id: string;
+  user: {
+    firstname: string;
+    lastname: string;
+    username: string;
+    email: string;
+  };
+  comment: string;
+  user_id: string;
+  created: string;
+}
+
+export interface ReviewProps {
+  data: Reviews;
+}

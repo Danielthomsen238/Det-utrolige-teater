@@ -2,9 +2,9 @@ import { StyledActors } from "../src/styles/styledComponents/StyledMain";
 import HtmlHead from "../components/Head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ActorItem from "../components/actorItem";
+import ActorItem from "../components/ActorItem";
 import { Actor } from "../interfaces/ComponentProps";
-import Animate from "../components/animate";
+import Animate from "../components/Animate";
 
 const Actors = () => {
   const [data, setData] = useState<Actor[]>();
