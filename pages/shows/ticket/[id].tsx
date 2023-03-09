@@ -1,23 +1,32 @@
 import axios from "axios";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import HtmlHead from "../../../components/Head";
+import { Ticket, useTicket } from "../../../helpers/useTicket";
 import { EventDetail } from "../../../interfaces/ComponentProps";
 import { StyledTicketPage } from "../../../src/styles/styledComponents/StyledMain";
+import { StyledStage, StyledSeat } from "../../../src/styles/styledComponents/StyledStage";
 
 const BuyTicket = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
   const [data, setData] = useState<EventDetail>();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    streetName: "",
-    houseNumber: "",
-    zipCode: "",
-    city: "",
-    quantity: 0,
-  });
+  const [stage, setStage] = useState<any[]>();
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+  const handleSelected = (item: string) => {
+    if (Array.isArray(selectedItems) && selectedItems.includes(item)) {
+      // If item is already in the array, remove it
+      setSelectedItems(selectedItems.filter((selected) => selected !== item));
+    } else {
+      // If item is not in the array, add it
+      setSelectedItems([...selectedItems, item]);
+    }
+  };
+
+  const { formData, seats, setFormData, setSeats } = useTicket() as Ticket;
 
   useEffect(() => {
     if (router.query.id) {
@@ -25,6 +34,14 @@ const BuyTicket = () => {
         .get(`https://api.mediehuset.net/detutroligeteater/events/${router.query.id}`)
         .then((r) => setData(r.data.item))
         .catch((e) => console.error(e));
+    }
+  }, [router.query.id]);
+  useEffect(() => {
+    if (router.query.id) {
+      axios
+        .get(`https://api.mediehuset.net/detutroligeteater/seats/${router.query.id}`)
+        .then((r) => setStage(r.data.items))
+        .catch((e) => console.log(e));
     }
   }, [router.query.id]);
 
@@ -36,8 +53,12 @@ const BuyTicket = () => {
       month: "short",
       year: "numeric",
     });
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+    const handleClick = (id: number) => {
+      setFormData({ ...formData }); // Trigger a re-render to update the form data
+      setSeats(id); // Add the new seat to the seats array
+    };
+    console.log(seats);
+    const handleSubmit = () => {
       if (formData.zipCode.length !== 4) {
         alert("Zip code must be 4 characters long.");
         return;
@@ -51,8 +72,35 @@ const BuyTicket = () => {
         return;
       }
       // Submit the form
-      console.log(formData);
+      const payload = {
+        firstname: formData.firstName,
+        lastname: formData.lastName,
+        address: `${formData.streetName} ${formData.houseNumber}`,
+        zipcode: formData.zipCode,
+        email: "test@test.com",
+        city: formData.city,
+        event_id: router.query.id,
+        seats,
+      };
+      console.log(payload);
+      const config = {
+        headers: {
+          Authorization: `Bearer ${session?.user.token}`,
+        },
+      };
+      axios
+        .post(`https://api.mediehuset.net/detutroligeteater/reservations`, payload, config)
+        .then((r) => console.log(r))
+        .catch((e) => console.log(e));
     };
+
+    const groupedData = stage?.reduce((line: any, item: any) => {
+      if (!line[item.line]) {
+        line[item.line] = [];
+      }
+      line[item.line].push(item);
+      return line;
+    }, {});
     return (
       <StyledTicketPage>
         <HtmlHead title="Køb Billet" description="Køb billet" />
@@ -106,6 +154,39 @@ const BuyTicket = () => {
             </form>
           </div>
         </section>
+        {groupedData && ( // Render the seats using Styled Components and passing the length of the array to the styled-component
+          <StyledStage length={groupedData[Object.keys(groupedData)[0]].length}>
+            <div className="stage_title">
+              <h3>{data.stage_name}</h3>
+            </div>
+            {/*First check if the groupData is not undefined,
+       then map over the entries for each entry, it creates a new div element with the line number
+        and inside it maps over the seats in the current line
+       */}
+            {groupedData &&
+              Object.entries(groupedData).map(([line, seats]: any) => (
+                <div className={`line_${line}`} key={line}>
+                  {seats.map((seat: any, index: number) => (
+                    <div
+                      onClick={() => {
+                        if (seat.is_reserved < 1) {
+                          handleClick(seat.id);
+                          handleSelected(seat.id);
+                        }
+                      }}
+                      key={seat.number}
+                      className={selectedItems.includes(seat.id) ? `seat_${seat.number} selected` : `seat_${seat.number} `}
+                      style={{ marginTop: index < seats.length / 2 ? index * 15 : (seats.length - index - 1) * 15 }}
+                    >
+                      <StyledSeat isReserved={seat.is_reserved} key={seat.id}></StyledSeat>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            <p className="bottom_p">VÆLGE SIDDEPLADSER</p>
+            <button onClick={() => handleSubmit()}>submite</button>
+          </StyledStage>
+        )}
       </StyledTicketPage>
     );
   } else {
