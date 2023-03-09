@@ -271,8 +271,18 @@ const StyledActors = styled.main`
   border: solid 2px ${(props) => props.theme.colors.secondary};
 `;
 const StyledTicketPage = styled.main`
+  position: relative;
   border: solid 1px ${(props) => props.theme.colors.secondary};
   margin-top: 40px;
+  margin-bottom: 40px;
+  .approve {
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    background-color: ${(props) => props.theme.colors.secondary};
+    padding: 10px 10px;
+    color: white;
+  }
   .ticket_form {
     display: flex;
     border-bottom: dashed 1px ${(props) => props.theme.colors.secondary};
@@ -286,7 +296,7 @@ const StyledTicketPage = styled.main`
         left: -200px;
         position: relative;
         width: 75vw;
-        height: 40vw;
+        height: 45vw;
       }
     }
     .form_container {
@@ -423,4 +433,87 @@ const StyledTicketPage = styled.main`
     }
   }
 `;
-export { StyledHome, StyledShows, StyledActors, StyledActorsDetail, StyledShowDetail, StyledTicketPage };
+
+const StyledBuyPage = styled.main`
+  border: solid 1px ${(props) => props.theme.colors.primary};
+  display: flex;
+  .image_wrapper {
+    position: relative;
+    width: 500px;
+    overflow: hidden;
+    border: solid 10px ${(props) => props.theme.colors.secondary};
+    div {
+      left: -200px;
+      position: relative;
+      width: 75vw;
+      height: 45vw;
+    }
+  }
+  .ticket {
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 70%;
+    text-align: right;
+    .top_title {
+      color: ${(props) => props.theme.colors.primary};
+      font-size: 40px;
+      border-bottom: solid 1px lightgrey;
+    }
+    .info {
+      text-align: left;
+      .mid_title {
+        color: gray;
+      }
+      .event {
+        span {
+          font-weight: 700;
+        }
+      }
+      .stage {
+        span {
+          font-weight: 700;
+        }
+      }
+      .date {
+        span {
+          font-weight: 700;
+        }
+      }
+      table {
+        margin-top: 30px;
+        width: 100%;
+        td:nth-child(2) {
+          width: 40%;
+        }
+        thead {
+          th {
+            border-bottom: solid 1px black;
+          }
+        }
+        tbody {
+          tr:not(:last-child) {
+            td {
+              border-bottom: solid 1px gray;
+              padding-bottom: 5px;
+            }
+          }
+          td {
+            padding-bottom: 5px;
+          }
+        }
+
+        tfoot {
+          td {
+            border-bottom: solid 1px black;
+            border-top: solid 1px black;
+            padding-bottom: 5px;
+          }
+        }
+      }
+      .moms {
+        text-align: right;
+      }
+    }
+  }
+`;
+export { StyledBuyPage, StyledHome, StyledShows, StyledActors, StyledActorsDetail, StyledShowDetail, StyledTicketPage };

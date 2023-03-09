@@ -49,6 +49,7 @@ export default NextAuth({
         const accessToken = await login(credentials.username, credentials.password);
         // @ts-ignore
         const payload = jwt_decode(accessToken.data.access_token) as Payload;
+
         // @ts-ignore
         if (accessToken.data.access_token) {
           return {
