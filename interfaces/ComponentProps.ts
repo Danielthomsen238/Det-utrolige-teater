@@ -92,3 +92,8 @@ export interface Reviews {
 export interface ReviewProps {
   data: Reviews;
 }
+
+export interface ReviewForm {
+  comment: string;
+  subject: string;
+}

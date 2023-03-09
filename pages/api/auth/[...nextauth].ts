@@ -76,7 +76,7 @@ export default NextAuth({
       }
     },
     async redirect({ url, baseUrl }) {
-      return baseUrl;
+      return url;
     },
     //save the information of the user in the jwt
     jwt: async ({ token, user }) => {

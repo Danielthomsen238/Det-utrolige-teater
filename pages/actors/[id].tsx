@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Animate from "../../components/Animate";
+import HtmlHead from "../../components/Head";
 import { Actor } from "../../interfaces/ComponentProps";
 import { StyledActorsDetail } from "../../src/styles/styledComponents/StyledMain";
 
@@ -11,15 +12,18 @@ const ActorDetail = () => {
   const router = useRouter();
   const [data, setData] = useState<Actor>();
   useEffect(() => {
-    axios
-      .get(`https://api.mediehuset.net/detutroligeteater/actors/${router.query.id}`)
-      .then((r) => setData(r.data.item))
-      .catch((e) => console.error(e));
+    if (router.query.id) {
+      axios
+        .get(`https://api.mediehuset.net/detutroligeteater/actors/${router.query.id}`)
+        .then((r) => setData(r.data.item))
+        .catch((e) => console.error(e));
+    }
   }, [router.query.id]);
   console.log(data);
   let string = "Hello Hello";
   return (
     <Animate>
+      <HtmlHead title="Skuespiller" description="Se detalje omkring en skuespiller" />
       <StyledActorsDetail>
         {data && (
           <div className="container">

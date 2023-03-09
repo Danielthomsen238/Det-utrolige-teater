@@ -45,7 +45,7 @@ const Card = (props: CardProps) => {
       </div>
       <div className="btn_container">
         <Link href={`/shows/${id}`}>LÆS MERE</Link>
-        <Link href={`/`}>KØB BILLET</Link>
+        <Link href={`/shows/ticket/${id}`}>KØB BILLET</Link>
       </div>
     </StyledCard>
   );

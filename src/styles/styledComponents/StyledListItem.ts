@@ -48,7 +48,7 @@ const StyledListItem = styled.div`
   .image_wrapper {
     position: relative;
     border: solid 5px ${(props) => props.theme.colors.secondary};
-    width: 100px;
+    width: 125px;
     height: 100px;
   }
   @media all and (max-width: 1200px) {
