@@ -11,18 +11,30 @@ import Link from "next/link";
 import Review from "../../components/Review";
 import { signIn, useSession } from "next-auth/react";
 import { Rating } from "@mui/material";
+import { NextPage } from "next";
 
-const ShowDetail = () => {
+//show detail page
+const ShowDetail: NextPage = () => {
+  //router to get id from the params
   const router = useRouter();
+  //useSession to get user information and token
   const { data: session, status } = useSession();
+  //useState to store EventDetails
   const [data, setData] = useState<EventDetail>();
+  //store reviews
   const [reviews, setReviews] = useState<Reviews[]>();
+  //password and username input to login
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  //rating input
   const [value, setValue] = useState<number | null>(0);
+  //review input to post
   const [formData, setFormData] = useState<ReviewForm>({ subject: "", comment: "" });
+  //runEffect is a toggle used to trigger the useEffect
   const [runEffect, setRunEffect] = useState<boolean>(false);
+  //useEffect to fetch data with the use of id from params
   useEffect(() => {
+    //check if params is set before fetch
     if (router.query.id) {
       axios
         .get(`https://api.mediehuset.net/detutroligeteater/events/${router.query.id}`)
@@ -36,9 +48,9 @@ const ShowDetail = () => {
     }
   }, [router.query.id, runEffect]);
 
-  console.log(reviews);
-
+  //check if data is fetch before trying to manipulate and render jsx
   if (data) {
+    //convert date string to correct format
     const startDateString = data.startdate;
     const endDateString = data.stopdate;
     const startDate = new Date(startDateString);
@@ -53,6 +65,8 @@ const ShowDetail = () => {
       month: "short",
       year: "numeric",
     });
+
+    //login with validation
     const handleLogin = () => {
       if (!username) {
         alert("Please enter your username");
@@ -64,6 +78,8 @@ const ShowDetail = () => {
       }
       signIn("credentials", { username, password });
     };
+
+    //validate form before post comment
     const validateForm = () => {
       if (!formData.subject) {
         alert("Please enter a subject for your review.");
@@ -77,17 +93,19 @@ const ShowDetail = () => {
         alert("Please select a rating for your review.");
         return;
       }
+      //payload to post
       const payload = {
         ...formData,
         num_stars: value,
         event_id: router.query.id,
       };
-      console.log(payload);
+      //header with token
       const config = {
         headers: {
           Authorization: `Bearer ${session?.user.token}`,
         },
       };
+
       axios
         .post(`https://api.mediehuset.net/detutroligeteater/reviews`, payload, config)
         .then((r) => {
@@ -118,9 +136,9 @@ const ShowDetail = () => {
               </div>
               <div className="top_info">
                 <div className="stage_date">
-                  <p className="stage">{data.stage_name}</p>
+                  <p className="stage">{data.stage_name.toUpperCase()}</p>
                   <p className="date">
-                    {formattedStartDate} - {formattedEndDate}
+                    {formattedStartDate.toUpperCase()} - {formattedEndDate.toUpperCase()}
                   </p>
                 </div>
                 <p className="price">BILLETPRIS: {data.price} DKK</p>

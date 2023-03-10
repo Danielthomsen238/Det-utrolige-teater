@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { Global } from "../../interfaces/StylesInterface";
-
+//Global styled components aka global styles
 export const GlobalStyles = createGlobalStyle<Global>`
 
 * {
@@ -9,8 +9,11 @@ export const GlobalStyles = createGlobalStyle<Global>`
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Titillium Web', sans-serif;
     
+}
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
 }
 html, body {
     width: 100%;

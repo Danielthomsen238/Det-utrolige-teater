@@ -1,5 +1,7 @@
 import { DefaultTheme } from "../../../interfaces/StylesInterface";
 
+//styling for theme provider
+
 export const theme: DefaultTheme = {
   colors: {
     background: "#fff",

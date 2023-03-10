@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styling for the topbar on detail pages
+
 const StyledShowsTopBar = styled.div`
   margin-top: 20px;
   display: flex;

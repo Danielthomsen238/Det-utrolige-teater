@@ -1,3 +1,5 @@
+//data structur for styles
+
 export interface Global {
   theme: {
     colors: {
@@ -20,7 +22,13 @@ export interface Global {
   };
   rows?: string;
 }
-
+export interface Lines {
+  length: number;
+}
+export interface NavProps {
+  showBurger: boolean;
+  showLogin: boolean;
+}
 export interface DefaultTheme {
   colors: {
     background: string;

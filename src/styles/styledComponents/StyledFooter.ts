@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styling for footer
+
 const StyledFooter = styled.footer`
   margin-top: 50px;
   background-color: ${(props) => props.theme.colors.tetiear};
@@ -53,7 +55,7 @@ const StyledFooter = styled.footer`
     .administration {
       position: absolute;
       top: 125px;
-      left: 24.5vw;
+      left: 27.5vw;
     }
     .social {
       margin-right: -10vw;

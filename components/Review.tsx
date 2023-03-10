@@ -2,7 +2,9 @@ import { ReviewProps } from "../interfaces/ComponentProps";
 import { StyledReview } from "../src/styles/styledComponents/StyledReview";
 import Rating from "@mui/material/Rating";
 
+//review component
 const Review = (props: ReviewProps) => {
+  //destruct props
   const {
     num_stars,
     user: { firstname, lastname },

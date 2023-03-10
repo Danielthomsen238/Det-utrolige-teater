@@ -47,15 +47,15 @@ export default NextAuth({
         if (!credentials) return null;
         console.log("credentials", credentials);
         const accessToken = await login(credentials.username, credentials.password);
-        // @ts-ignore
-        const payload = jwt_decode(accessToken.data.access_token) as Payload;
 
-        // @ts-ignore
-        if (accessToken.data.access_token) {
+        if (accessToken) {
+          const payload = jwt_decode(accessToken.data.access_token) as Payload;
+          console.log("payload", accessToken);
           return {
-            // @ts-ignore
             token: accessToken.data.access_token,
             userID: payload.uid,
+            firstname: accessToken.data.user.firstname,
+            lastname: accessToken.data.user.lastname,
           };
         } else {
           console.log("error");
@@ -85,6 +85,9 @@ export default NextAuth({
         return {
           ...token,
           userID: user.userID,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
           token: user.token,
         } as JWT;
       }
@@ -96,6 +99,10 @@ export default NextAuth({
 
       session.user.token = token.token;
       session.user.userID = token.userID;
+      session.user.lastname = token.lastname;
+      session.user.firstname = token.firstname;
+      session.user.email = token.email;
+
       return session;
     },
   },

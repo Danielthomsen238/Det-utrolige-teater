@@ -1,7 +1,6 @@
 import styled from "styled-components";
-interface Lines {
-  length: number;
-}
+import { Lines } from "../../../interfaces/StylesInterface";
+// styling for stage
 const StyledStage = styled.main<Lines>`
   display: flex;
   flex-direction: column;

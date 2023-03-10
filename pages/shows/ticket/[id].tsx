@@ -1,4 +1,5 @@
 import axios from "axios";
+import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,13 +12,22 @@ import { EventDetail } from "../../../interfaces/ComponentProps";
 import { StyledTicketPage } from "../../../src/styles/styledComponents/StyledMain";
 import { StyledStage, StyledSeat } from "../../../src/styles/styledComponents/StyledStage";
 
-const BuyTicket = () => {
+//first step to buy ticket
+const BuyTicket: NextPage = () => {
+  //useSession for user information and token
+  const { data: session, status } = useSession();
+  //router to get id from params
   const router = useRouter();
+  //store event detail from fetch
   const [data, setData] = useState<EventDetail>();
+  //store seats array
   const [stage, setStage] = useState<any[]>();
+  //useState to store selected seats (only to change class/background color)
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  //store formdata seats and seats information in zustand
   const { formData, seats, setFormData, setSeats, setSeatsInfo } = useTicket() as Ticket;
 
+  //Function to set selected seats if not in the array, else remove from array
   const handleSelected = (item: string) => {
     if (Array.isArray(selectedItems) && selectedItems.includes(item)) {
       // If item is already in the array, remove it
@@ -27,7 +37,7 @@ const BuyTicket = () => {
       setSelectedItems([...selectedItems, item]);
     }
   };
-
+  //useEffect to fetch before render
   useEffect(() => {
     if (router.query.id) {
       axios
@@ -44,8 +54,14 @@ const BuyTicket = () => {
         .catch((e) => console.log(e));
     }
   }, [router.query.id]);
-
+  //check if data is true
   if (data) {
+    //check if logged in
+    if (!session) {
+      //push if not
+      router.push("/api/auth/signin?csrf=true");
+    }
+    //convert date to correct form
     const startDateString = data.startdate;
     const startDate = new Date(startDateString);
     const formattedStartDate = startDate.toLocaleDateString("da-DK", {
@@ -53,20 +69,51 @@ const BuyTicket = () => {
       month: "short",
       year: "numeric",
     });
+    //function to add seats to seat array and seats info to seatsinfo array
     const handleClick = (id: number, price: number, line: number, seat: number) => {
       setFormData({ ...formData }); // Trigger a re-render to update the form data
       setSeats(id); // Add the new seat to the seats array
       setSeatsInfo({ price, line, seat });
     };
-    console.log(seats);
 
+    //Reduce method to group seats with the same line in to one array
     const groupedData = stage?.reduce((line: any, item: any) => {
+      //if array dont exist with initial value then create array
       if (!line[item.line]) {
         line[item.line] = [];
       }
+      //and push the seats to array if the line is the same
       line[item.line].push(item);
+      //then return array
       return line;
     }, {});
+
+    //validate form before route to next step of buying tickets
+    const submitToNextPage = (id: any) => {
+      //using regex to validate email and checking if input is correct form
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (formData.zipCode.length !== 4) {
+        alert("Zip code must be 4 characters long.");
+        return;
+      }
+      if (parseInt(formData.houseNumber) < 0) {
+        alert("House number must be greater than or equal to 0.");
+        return;
+      }
+      if (formData.quantity === 0) {
+        alert("Quantity cannot be 0.");
+        return;
+      }
+      if (!emailRegex.test(formData.email)) {
+        alert("Email must be valid and contain an '@' symbol.");
+        return;
+      }
+      if (seats.length === 0) {
+        alert("Du skal vælge et sted at sidde");
+        return;
+      }
+      router.push(`/shows/ticket/buy/${id}`);
+    };
     return (
       <Animate>
         <StyledTicketPage>
@@ -146,6 +193,7 @@ const BuyTicket = () => {
                   <div className={`line_${line}`} key={line}>
                     {seats.map((seat: any, index: number) => (
                       <div
+                        //if seat is not reserved then you will be able to select the seat
                         onClick={() => {
                           if (seat.is_reserved < 1) {
                             handleClick(seat.id, parseInt(data.price), seat.line, seat.number);
@@ -153,7 +201,9 @@ const BuyTicket = () => {
                           }
                         }}
                         key={seat.number}
+                        //if selected change background color
                         className={selectedItems.includes(seat.id) ? `seat_${seat.number} selected` : `seat_${seat.number} `}
+                        //Increment margin with index * 15 if index is smaller then half of seats.length, decrement if its bigger then seats.length
                         style={{ marginTop: index < seats.length / 2 ? index * 15 : (seats.length - index - 1) * 15 }}
                       >
                         <StyledSeat isReserved={seat.is_reserved} key={seat.id}></StyledSeat>
@@ -164,9 +214,9 @@ const BuyTicket = () => {
               <p className="bottom_p">VÆLGE SIDDEPLADSER</p>
             </StyledStage>
           )}
-          <Link className="approve" href={`/shows/ticket/buy/${data.id}`}>
+          <button className="approve" onClick={() => submitToNextPage(router.query.id)}>
             GODKEND BESTILLING
-          </Link>
+          </button>
         </StyledTicketPage>
       </Animate>
     );

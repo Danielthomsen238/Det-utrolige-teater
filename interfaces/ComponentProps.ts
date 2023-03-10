@@ -1,3 +1,5 @@
+//data structure for components
+
 export interface HtmlHeadProps {
   title: string;
   description: string;

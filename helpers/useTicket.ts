@@ -1,11 +1,13 @@
 import { create } from "zustand";
 
+//define data structure
 interface Seats {
   seat: number;
   line: number;
   price: number;
 }
 
+//define data structure
 export interface Ticket {
   formData: {
     firstName: string;
@@ -23,7 +25,7 @@ export interface Ticket {
   setSeats: (newSeat: number) => void;
   setSeatsInfo: (newSeat: Seats) => void;
 }
-
+//zustand function to store formdata and seats
 export const useTicket = create<Ticket>((set) => ({
   formData: {
     firstName: "",

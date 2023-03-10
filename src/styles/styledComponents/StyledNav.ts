@@ -1,10 +1,7 @@
 import styled from "styled-components";
+import { NavProps } from "../../../interfaces/StylesInterface";
 
-interface NavProps {
-  showBurger: boolean;
-  showLogin: boolean;
-}
-
+// stuling for nav
 const StyledNav = styled.nav<NavProps>`
   position: relative;
   width: 100%;
@@ -47,7 +44,7 @@ const StyledNav = styled.nav<NavProps>`
     right: 0;
     input {
       padding-left: 5px;
-      width: 150px;
+      width: 125px;
       border: none;
       border-bottom: 1px solid lightgray;
     }
@@ -77,7 +74,7 @@ const StyledNav = styled.nav<NavProps>`
       flex-direction: column;
       align-items: center;
       a {
-        font-size: 5vw;
+        font-size: 3vw;
         color: #707070;
         &:hover {
           color: #d39d5b;
@@ -85,7 +82,7 @@ const StyledNav = styled.nav<NavProps>`
       }
       p {
         cursor: pointer;
-        font-size: 5vw;
+        font-size: 3vw;
         color: #707070;
         &:hover {
           color: #d39d5b;
@@ -126,6 +123,41 @@ const StyledNav = styled.nav<NavProps>`
       position: absolute;
       bottom: ${(props) => (props.showBurger ? "10px" : "20px")};
       transform: ${(props) => (props.showBurger ? "rotate(-50deg)" : "rotate(0deg)")};
+    }
+  }
+
+  @media all and (max-width: 1000px) {
+    .nav {
+      background-color: ${(props) => props.theme.colors.background};
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      .links {
+        margin-top: 10px;
+        transition: 300ms ease-in-out;
+        height: ${(props) => (props.showBurger ? "25vw" : "0vw")};
+        overflow: hidden;
+        z-index: 5;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        a {
+          font-size: 4vw;
+          color: #707070;
+          &:hover {
+            color: #d39d5b;
+          }
+        }
+        p {
+          cursor: pointer;
+          font-size: 4vw;
+          color: #707070;
+          &:hover {
+            color: #d39d5b;
+          }
+        }
+      }
     }
   }
 
@@ -172,6 +204,9 @@ const StyledNav = styled.nav<NavProps>`
         a {
           margin-right: 20px;
           font-size: 1.7vw;
+        }
+        .active {
+          color: ${(props) => props.theme.colors.primary};
         }
         p {
           font-size: 1.7vw;

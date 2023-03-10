@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styling for review item
+
 const StyledReview = styled.div`
   border-top: solid lightgray 1px;
   padding-top: 20px;

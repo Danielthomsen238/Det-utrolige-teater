@@ -3,7 +3,9 @@ import Link from "next/link";
 import { CardProps } from "../interfaces/ComponentProps";
 import { StyledCard } from "../src/styles/styledComponents/StyledCard";
 
+//card component for the 3 show on the frontpage
 const Card = (props: CardProps) => {
+  //destruct props
   const { id, image_large, startdate, stopdate, stage_name, title, genre } = props.data;
 
   /*Here i use the toLocaleDateString method to convert the start and end date to another format*/

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+//styling for show list item
 const StyledListItem = styled.div`
   margin-bottom: 10px;
   position: relative;
@@ -32,11 +32,15 @@ const StyledListItem = styled.div`
       margin-left: 30px;
       width: 200px;
       height: 70px;
+
       border-right: solid 1px lightgray;
       display: flex;
       align-items: center;
       font-size: 30px;
       color: ${(props) => props.theme.colors.primary};
+      p {
+        font-family: "Playfair Display", serif;
+      }
     }
     .date_stage {
       margin-left: 20px;
@@ -74,10 +78,14 @@ const StyledListItem = styled.div`
         height: 85px;
         padding-bottom: 10px;
         border: none;
+
         border-bottom: solid 1px lightgray;
         justify-content: center;
         font-size: 35px;
         color: ${(props) => props.theme.colors.primary};
+        p {
+          font-family: "Playfair Display", serif;
+        }
       }
       .date_stage {
         margin: 0;

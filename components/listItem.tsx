@@ -3,7 +3,9 @@ import { CardProps } from "../interfaces/ComponentProps";
 import Image from "next/image";
 import Link from "next/link";
 
+//list item for shows
 const ListItem = (props: CardProps) => {
+  //destruct props
   const { id, image_large, title, stage_name, startdate, stopdate } = props.data;
 
   /*Here i use the toLocaleDateString method to convert the start and end date to another format*/

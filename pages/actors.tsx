@@ -5,16 +5,20 @@ import axios from "axios";
 import ActorItem from "../components/ActorItem";
 import { Actor } from "../interfaces/ComponentProps";
 import Animate from "../components/Animate";
+import { NextPage } from "next";
 
-const Actors = () => {
+//actore page
+const Actors: NextPage = () => {
+  //store actore data from fetch
   const [data, setData] = useState<Actor[]>();
+
+  //useEffect to fetch before render
   useEffect(() => {
     axios
       .get(`https://api.mediehuset.net/detutroligeteater/actors`)
       .then((r) => setData(r.data.items))
       .catch((e) => console.error(e));
   }, []);
-  console.log(data);
 
   return (
     <Animate>

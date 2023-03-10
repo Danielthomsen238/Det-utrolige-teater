@@ -1,13 +1,14 @@
 import { create } from "zustand";
 import axios from "axios";
 
+//define data structure
 export interface FavoriteState {
   favorites: [];
   setFavorites: (event_id: any, token: any) => void;
   deleteFavorites: (event_id: any, token: any) => void;
   getFavorites: (token: any) => Promise<void>;
 }
-
+//zustand function for state management favorites, get, post, delete
 export const useFavorite = create(
   (set): FavoriteState => ({
     favorites: [],

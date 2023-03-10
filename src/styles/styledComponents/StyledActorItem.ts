@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styling for actor list item
+
 const StyledActorItem = styled.div`
   position: relative;
   margin-top: 20px;
@@ -19,6 +21,7 @@ const StyledActorItem = styled.div`
       margin-bottom: 20px;
     }
     p {
+      font-family: "Playfair Display", serif;
       color: ${(props) => props.theme.colors.primary};
     }
     width: 50%;

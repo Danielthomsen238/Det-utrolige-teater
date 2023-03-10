@@ -3,9 +3,11 @@ import Link from "next/link";
 import { ActorItemProps } from "../interfaces/ComponentProps";
 import { StyledActorItem } from "../src/styles/styledComponents/StyledActorItem";
 
+//Actoritem component
 const ActorItem = (props: ActorItemProps) => {
+  //destruct props
   const { id, name, image, description } = props.data;
-
+  //config for how long the description can be
   const maxLength = 700; // Set maximum length of string
   let smallDescription: string;
 

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styling for header
+
 const StyledHeader = styled.header`
   margin-top: 50px;
   div {
@@ -43,6 +45,7 @@ const StyledHeader = styled.header`
       .genre {
         margin-right: 10px;
         font-size: 6vw;
+        color: gray;
       }
     }
     .image_wrapper {

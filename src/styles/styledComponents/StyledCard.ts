@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//styling for the 3 card on the front page
+
 const StyledCard = styled.div`
   margin: 0 auto;
   width: 350px;
@@ -11,7 +13,7 @@ const StyledCard = styled.div`
   .image_wrapper {
     position: relative;
     width: 350px;
-    height: 350px;
+    height: 300px;
     border: solid 10px ${(props) => props.theme.colors.secondary};
   }
   .info {
@@ -43,6 +45,7 @@ const StyledCard = styled.div`
     }
 
     .title {
+      font-family: "Playfair Display", serif;
       font-size: 9vw;
       margin-right: 30px;
       color: ${(props) => props.theme.colors.primary};
